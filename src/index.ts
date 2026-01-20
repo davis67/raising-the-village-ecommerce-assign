@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from "express";
 import "dotenv/config";
 import logger from "./utils/logger";
+import { connectDB } from "./utils/database";
 
 const app: Application = express();
 const PORT = process.env.PORT || 3001;
@@ -10,8 +11,9 @@ app.get("/api/health", (_req: Request, res: Response) => {
   res.json({ status: "API is running", timestamp: new Date().toISOString() });
 });
 
-const startServer = () => {
+const startServer = async () => {
   try {
+    await connectDB();
     app.listen(PORT, () => {
       logger.info(`Server is running on port ${PORT}`);
       logger.info(`Environment: ${process.env.NODE_ENV}`);
