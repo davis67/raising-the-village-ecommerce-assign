@@ -10,4 +10,10 @@ router.post(
   (req: Request, res: Response) => uploadController.uploadCustomers(req, res)
 );
 
+router.post(
+  "/orders",
+  uploadCSV.single("file"),
+  (req: Request, res: Response) => uploadController.uploadOrders(req, res)
+);
+
 export default router;
