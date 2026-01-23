@@ -22,7 +22,7 @@ app.use((req: Request, _res: Response, next: NextFunction) => {
 
 // Routes
 app.use("/api/upload", uploadRoutes);
-app.use("/api/customers", customerRoutes);
+app.use("/api/reports", customerRoutes);
 
 // Health check endpoint
 app.get("/api/health", (_req: Request, res: Response) => {

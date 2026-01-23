@@ -1,4 +1,3 @@
-# raising-the-village-ecommerce-assign
 # E-Commerce Data Integration API
 
 A Node.js/TypeScript REST API service that imports customer and order data from CSV files into MongoDB and provides endpoints to retrieve the combined data.
@@ -62,7 +61,7 @@ A Node.js/TypeScript REST API service that imports customer and order data from 
 ### 1. Install Dependencies
 
 ```bash
-cd /Users/aghaba/Learning/RaisingTheVillage
+cd <<**app-folder**>>
 npm install
 ```
 
@@ -195,7 +194,7 @@ order_id,customer_id,product_name,amount,order_date,status
 ```
 
 ### 3. Get Single Customer (GET)
-**Endpoint**: `GET /api/customers/:id`
+**Endpoint**: `GET /api/customers/:id/summary`
 
 **Description**: Retrieve a specific customer with all their orders
 
@@ -244,7 +243,7 @@ order_id,customer_id,product_name,amount,order_date,status
 ```
 
 ### 4. Get All Customers (GET)
-**Endpoint**: `GET /api/customers`
+**Endpoint**: `GET /api/reports/customer-orders`
 
 **Description**: Retrieve all customers with their aggregated order data
 
@@ -299,12 +298,12 @@ order_id,customer_id,product_name,amount,order_date,status
    - Send request
 
 4. **Get Single Customer**:
-   - GET `/api/customers/1`
+   - GET `/api/customers/1/summary`
    - Review the response with customer details and orders
 
 5. **Get All Customers**:
-   - GET `/api/customers`
-   - GET `/api/customers?sortBySpent=true` (sorted by spending)
+   - GET `/api/reports/customer-orders`
+   - GET `/api/reports/customer-orders?sortBySpent=true` (sorted by spending)
 
 ## Running Tests
 
@@ -472,22 +471,3 @@ kill -9 <PID>
 ### CSV Parsing Errors
 **Solution**: Ensure CSV format matches expected columns with correct headers
 
-## Future Enhancements
-
-- [ ] Transaction support for multi-document operations
-- [ ] Advanced filtering and search functionality
-- [ ] Rate limiting and request throttling
-- [ ] Authentication and authorization
-- [ ] API versioning
-- [ ] GraphQL endpoint
-- [ ] Real-time notifications with WebSocket
-- [ ] Data export functionality
-- [ ] Advanced analytics and reporting
-
-## License
-
-ISC
-
-## Contact
-
-For questions or issues, please create an issue in the repository.

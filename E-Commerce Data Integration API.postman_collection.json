@@ -1,0 +1,228 @@
+{
+  "info": {
+    "_postman_id": "4b1412dd-9bdb-4141-9e74-31bb6a170d2a",
+    "name": "E-Commerce Data Integration API",
+    "description": "API endpoints for uploading and retrieving customer and order data",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "5140585",
+    "_collection_link": "https://go.postman.co/collection/5140585-4b1412dd-9bdb-4141-9e74-31bb6a170d2a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/health",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "health"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upload Customers CSV",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "sample-data/customers.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/upload/customers",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "upload",
+            "customers"
+          ]
+        },
+        "description": "Upload and import customers from CSV file"
+      },
+      "response": []
+    },
+    {
+      "name": "Upload Orders CSV",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "src": "sample-data/orders.csv"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:3000/api/upload/orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "upload",
+            "orders"
+          ]
+        },
+        "description": "Upload and import orders from CSV file"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Single Customer with Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/reports/customer-orders/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "reports",
+            "customer-orders",
+            "1"
+          ]
+        },
+        "description": "Retrieve a specific customer with all their orders and order summary"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Customers with Orders",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/reports/customer-orders",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "reports",
+            "customer-orders"
+          ]
+        },
+        "description": "Retrieve all customers with their order summaries"
+      },
+      "response": [
+        {
+          "name": "Get All Customers with Orders",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/customers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "api",
+                "customers"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "X-Powered-By",
+              "value": "Express"
+            },
+            {
+              "key": "Access-Control-Allow-Origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "976"
+            },
+            {
+              "key": "ETag",
+              "value": "W/\"3d0-blx4FMJFw2A5hS+ZgdDqFlHqMWU\""
+            },
+            {
+              "key": "Date",
+              "value": "Fri, 23 Jan 2026 04:54:05 GMT"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "Keep-Alive",
+              "value": "timeout=5"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"customer\": {\n                \"id\": \"3\",\n                \"name\": \"Mike Johnson\",\n                \"email\": \"mike@example.com\",\n                \"country\": \"Canada\",\n                \"signupDate\": \"2024-03-10\"\n            },\n            \"orderSummary\": {\n                \"totalOrders\": 1,\n                \"totalSpent\": 299.99,\n                \"orders\": [\n                    {\n                        \"orderId\": \"104\",\n                        \"productName\": \"Monitor\",\n                        \"amount\": 299.99,\n                        \"orderDate\": \"2024-06-10\",\n                        \"status\": \"shipped\"\n                    }\n                ]\n            }\n        },\n        {\n            \"customer\": {\n                \"id\": \"2\",\n                \"name\": \"Jane Smith\",\n                \"email\": \"jane@example.com\",\n                \"country\": \"UK\",\n                \"signupDate\": \"2024-02-20\"\n            },\n            \"orderSummary\": {\n                \"totalOrders\": 1,\n                \"totalSpent\": 79.99,\n                \"orders\": [\n                    {\n                        \"orderId\": \"103\",\n                        \"productName\": \"Keyboard\",\n                        \"amount\": 79.99,\n                        \"orderDate\": \"2024-06-01\",\n                        \"status\": \"pending\"\n                    }\n                ]\n            }\n        },\n        {\n            \"customer\": {\n                \"id\": \"1\",\n                \"name\": \"John Doe\",\n                \"email\": \"john@example.com\",\n                \"country\": \"USA\",\n                \"signupDate\": \"2024-01-15\"\n            },\n            \"orderSummary\": {\n                \"totalOrders\": 2,\n                \"totalSpent\": 1029.98,\n                \"orders\": [\n                    {\n                        \"orderId\": \"102\",\n                        \"productName\": \"Mouse\",\n                        \"amount\": 29.99,\n                        \"orderDate\": \"2024-05-15\",\n                        \"status\": \"completed\"\n                    },\n                    {\n                        \"orderId\": \"101\",\n                        \"productName\": \"Laptop\",\n                        \"amount\": 999.99,\n                        \"orderDate\": \"2024-05-01\",\n                        \"status\": \"completed\"\n                    }\n                ]\n            }\n        }\n    ],\n    \"count\": 3\n}"
+        }
+      ]
+    },
+    {
+      "name": "Get All Customers Sorted by Total Spent",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/api/reports/customer-orders?sortBySpent=true",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "3000",
+          "path": [
+            "api",
+            "reports",
+            "customer-orders"
+          ],
+          "query": [
+            {
+              "key": "sortBySpent",
+              "value": "true"
+            }
+          ]
+        },
+        "description": "Retrieve all customers sorted by total spent (descending)"
+      },
+      "response": []
+    }
+  ]
+}
